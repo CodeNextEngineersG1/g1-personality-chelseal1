@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  background-color: #6EC1F8; 
 }
 *, *:before, *:after {
   box-sizing: inherit;
@@ -12,13 +13,14 @@ header {
 main {
 	text-align: center;
 }
-#try-submit{
+#form-submit{
 	margin-top: 10px;
 	margin-right: auto;
 	margin-bottom: 10px;
 	margin-left: auto;
 	width: 200px;
 	height: 50px;
+	align: center;
 } 
 #try-again{
 	margin-top: 10px;
@@ -30,16 +32,22 @@ main {
 	display: none;
 }
 #quiz-wrapper{
+	align-content: center;
+	display: flex;
+}
+
+/*#frontImage{
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: space-around; 
-}
+
+}*/
 .questions{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: center;
+	align-content: center;
 	width: 75%;
 
 }
@@ -69,4 +77,10 @@ input{
 }
 body div{
 	border-color: black;
+}
+
+img{
+	width: 50%;
+	height: 50%;
+	align-content: center;
 }

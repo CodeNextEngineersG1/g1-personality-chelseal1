@@ -1,7 +1,7 @@
 /* remove this comment and place your JavaScript here */ 
-var value = null;
-var trait = null;
-var celebrity = null;
+var questionOneValue = null;
+var questionTwoTrait = null;
+var questionThreeCelebrity = null;
 var pageTitle = document.getElementById("page-title");
 var pageTitleText = pageTitle.innerHTML; 
 var tryAgain =  document.getElementById("try-again");
@@ -14,6 +14,41 @@ tryAgain.addEventListener("click", resetQuiz);
 formSubmit.addEventListener("click", processResults);
 
 function processResults(){
+	questionOneValue = document.querySelector('input[name="questionOneValue"]:checked');
+	questionTwoTrait = document.querySelector('input[name="questionTwoTrait"]:checked');
+	questionThreeCelebrity = document.querySelector('input[name="questionThreeCelebrity"]:checked');
+	
+  if (questionOneValue === null){
+		alert("You must answer all questions before submitting");
+	} 
+  if (questionTwoTrait === null){
+    alert("You must answer all questions before submitting");
+  } 
+  if (questionThreeCelebrity === null){
+     alert("You must answer all questions before submitting");
+  }else{
+		var personality = getPersonality();
+  	quizWrapper.style.display = "none"; 
+  	formSubmit.style.display = "none"; 
+  	result.style.display = "block";
+  	tryAgain.style.display = "block";
+	}
+	
+	if (personality == 1){
+		pageTitle.innerHTML = "You are Nakia!"
+		result.style.backgroundImage = "url('Nakia.png')"
+	} else if(personality == 2){
+	  pageTitle.innerHTML = "You are Okoye!"
+		result.style.backgroundImage = "url('Okoye.png')"
+	} else if(personality == 3){
+		pageTitle.innerHTML = "You are T'Challa!"
+		result.style.backgroundImage = "url('T'Challa.png')"
+	} else if(personality == 4){
+		pageTitle.innerHTML = "You are Erick!"
+		result.style.backgroundImage = "url('Erick.png')"
+	}
+
+
 
 }
 function getPersonality(){
@@ -46,7 +81,7 @@ function getPersonality(){
   	}
 
 
-  	  	if(questionThreeCelebrity.id === "T'ChallaResponse3-MartinLutherKingJr.") {
+  	if(questionThreeCelebrity.id === "T'ChallaResponse3-MartinLutherKingJr.") {
     	score += 3;
     }
     else if(questionThreeCelebrity.id === "ErickResponse3-MalcolmX") {
@@ -61,18 +96,38 @@ function getPersonality(){
 
 
   	if (score >= 0 && score <= 3){
-  		return 0;
+  		return 1;
+      //Nakia 
   	}
   	else if (score >= 4 && score <= 6){
-  		return 1;
+  		return 2;
+      //Okoye
 	}
 	else if (score >= 7 && score <= 9){
-		return 2;
+		  return 3;
+    //Erick
 	}
 	else if (score >= 10 && score <= 12){
-		return 3;
+	   	return 4;
+    //TChalla
 	}
+}
+
 
 function resetQuiz(){
 
+	pageTitle.innerHTML = pageTitleText;
+  quizWrapper.style.display = "flex"; 
+  result.style.display = "none";
+  tryAgain.style.display = "none";
+  formSubmit.style.display = "flex";
+
+ questionOneValue.checked = false;
+ questionTwoTrait.checked = false;
+ questionThreeCelebrity.checked = false;
+
+
+ questionOneValue = null;
+ questionTwoTrait = null;
+ questionThreeCelebrity = null;
 }
